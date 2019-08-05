@@ -5,6 +5,7 @@ import {
     Linking,
     Platform,
     Image,
+    ImageBackground
     Text} from 'react-native';
 
 
@@ -40,26 +41,33 @@ export default class AppTeamNumbers extends React.Component {
     render() {
       return (
        <Fragment>
+          <ImageBackground source={require('./src/images/BACKG5.png')} 
+            style={{
+              flex:1
+              }}>
           <View style={{
            backgroundColor:'#213368',
            borderRadius: 10,
-           padding:15
+           paddingTop:30,
+           paddingLeft:20
+           paddingRight:20          
          }}>
           <View>
-              <Image source={require('../assets/PSLOGOWHITE.png')} style={{alignItems: 'flex-start', height:19, width:19, borderRadius:6}} />
-              <Text style={{color:'white', fontSize: 19, padding: 13}}> Prajwal</Text>
+              <Image source={require('../assets/PSLOGOWHITE.png')} style={{alignItems: 'flex-start', height:23, width:23, borderRadius:6}} />
+              <Text style={{color:'white', fontSize: 14, padding: 5}}> Prajwal</Text>
               <TouchableOpacity onPress={this.dialCallP} activeOpacity={0.7} style={{alignItems: 'flex-end'}} >
               <Image source={require('../assets/dialer-app.png')} />
               </TouchableOpacity>
         </View>
         <View>
-              <Image source={require('../assets/PSLOGOWHITE.png')} style={{alignItems: 'flex-start', height:19, width:19, borderRadius:6}} />
-              <Text style={{color:'white', fontSize: 19, padding: 13}}> Guru Nanma </Text>
+              <Image source={require('../assets/PSLOGOWHITE.png')} style={{alignItems: 'flex-start', height:23, width:23, borderRadius:6}} />
+              <Text style={{color:'white', fontSize: 14, padding: 5}}> Guru Nanma </Text>
               <TouchableOpacity onPress={this.dialCallN} activeOpacity={0.7} style={{alignItems: 'flex-end'}} >
               <Image source={require('../assets/dialer-app.png')} />
               </TouchableOpacity>
         </View>
         </View>
+        </ImageBackground>
      </Fragment>
       );
     }
