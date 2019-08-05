@@ -56,14 +56,14 @@ export default class AppTeamNumbers extends React.Component {
               <Image source={require('../assets/PSLOGOWHITE.png')} style={{alignItems: 'flex-start', height:23, width:23, borderRadius:6}} />
               <Text style={{color:'white', fontSize: 14, padding: 5}}> Prajwal</Text>
               <TouchableOpacity onPress={this.dialCallP} activeOpacity={0.7} style={{alignItems: 'flex-end'}} >
-              <Image source={require('../assets/dialer-app.png')} />
+              <Image source={require('../assets/dialer-app.png')}  style={{ height:22, width:22, borderRadius:6}}/>
               </TouchableOpacity>
         </View>
         <View>
               <Image source={require('../assets/PSLOGOWHITE.png')} style={{alignItems: 'flex-start', height:23, width:23, borderRadius:6}} />
               <Text style={{color:'white', fontSize: 14, padding: 5}}> Guru Nanma </Text>
               <TouchableOpacity onPress={this.dialCallN} activeOpacity={0.7} style={{alignItems: 'flex-end'}} >
-              <Image source={require('../assets/dialer-app.png')} />
+              <Image source={require('../assets/dialer-app.png')}  style={{ height:22, width:22, borderRadius:6}} />
               </TouchableOpacity>
         </View>
         </View>
