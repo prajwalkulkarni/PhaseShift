@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View,SafeAreaView,ScrollView,Dimensions ,Image} from 'react-native';
 import {createStackNavigator,createAppContainer,createDrawerNavigator, DrawerItems, createSwitchNavigator, createMaterialTopTabNavigator} from 'react-navigation';
 import { Icon }  from 'react-native-elements';
-import CatalogEvents from './screens/CatalogEvents';
+import Events from './screens/Events';
 import Schedule from './screens/Schedule';
 import Workshop from './screens/Workshop';
 import Map from './screens/Map';
@@ -10,6 +10,8 @@ import AboutUs from './screens/AboutUs';
 import AboutBMSCE from './screens/AboutBMSCE';
 import AboutTheme from './screens/AboutTheme';
 import TeamPage from './screens/TeamPage';
+import CoreNumbers from './screens/CoreNumbers';
+import AppTeamNumbers from './screens/AppTeamNumbers';
 
 
 const {width} = Dimensions.get('window')
@@ -28,8 +30,8 @@ const CustomDrawerComponent = (props) => (
 
 
 const AppTabNavigator = createMaterialTopTabNavigator({
-  CatalogEvents: {
-    screen:CatalogEvents,
+  Events: {
+    screen:Events,
     navigationOption:{
       tabBarLabel: 'Events',
       tabBarIcon:({tintColor})=>(
@@ -50,10 +52,7 @@ const AppTabNavigator = createMaterialTopTabNavigator({
       tabBarLabel: 'Map',
       tabBarIcon:({tintColor})=>(
         <Icon name='explore' color={tintColor} size={25} />
-       ),
-       drawerIcon : (
-        <Image source={require('./assets/about.png')} style={{height:24,width:24}} />
-      )
+       )
        }},
   Schedule: {
     screen : Schedule,
@@ -63,13 +62,11 @@ const AppTabNavigator = createMaterialTopTabNavigator({
         <Icon name='schedule' color={tintColor} size={25} />
        ),
       
-       drawerIcon : (
-        <Image source={require('./assets/about.png')} style={{height:24,width:24}} />
-      )}}
+      }}
 }, {
 
     initialRouteName:'Workshop',
-    order: ['Workshop', 'CatalogEvents', 'Schedule', 'Map'],
+    order: ['Workshop', 'Events', 'Schedule', 'Map'],
     tabBarPosition: 'bottom',
     tabBarOptions: {
       activeTintColor: 'rgba(34, 189, 239, 0.99)',
@@ -86,13 +83,46 @@ const AppTabNavigator = createMaterialTopTabNavigator({
     }
 })
 
+const TabNavigator = createMaterialTopTabNavigator({
+  CoreNumbers: {
+    screen:CoreNumbers,
+    navigationOption:{
+      tabBarLabel: 'Core Team'
+      
+    }
+  },
+  AppTeamNumbers: {
+    screen: AppTeamNumbers,
+    navigationOption:{
+      tabBarLabel: 'App Team'
+     
+      }}
+  
+}, {
+    initialRouteName: 'CoreNumbers',
+    order: ['CoreNumbers', 'AppTeamNumbers'],
+    tabBarOptions: {
+      activeTintColor: 'rgba(34, 189, 239, 0.99)',
+      inactiveTintColor: 'white',
+      style: {
+        backgroundColor: '#213368',
+        borderTopWidth: 0.5
+      },
+      indicatorStyle: {
+        height: 0
+      }
+
+    }
+})
+
+
 const AppDrawerNavigation = createDrawerNavigator({
   AboutUs:AboutUs,
-  CatalogEvents:AppTabNavigator,
+  Events:AppTabNavigator,
   Workshop:AppTabNavigator,
   Schedule:AppTabNavigator,
   Map:AppTabNavigator,
-  TeamPage:TeamPage,
+  CoreNumbers:TabNavigator,
   AboutTheme:AboutTheme,
   AboutBMSCE:AboutBMSCE
   
@@ -118,13 +148,14 @@ const stackNavigator = createStackNavigator({
 const AppSwitchNavigator = createSwitchNavigator({
 
   AboutUs:AppDrawerNavigation,
-  CatalogEvents:AppDrawerNavigation,
+  Events:AppDrawerNavigation,
   Workshop:AppDrawerNavigation,
   Schedule:AppDrawerNavigation,
   Map:AppDrawerNavigation,
-  TeamPage:AppDrawerNavigation,
   AboutTheme:stackNavigator,
-  AboutBMSCE:stackNavigator
+  AboutBMSCE:stackNavigator,
+  AppTeamNumbers:TabNavigator,
+  CoreNumbers:TabNavigator
   
 })
 
