@@ -1,74 +1,168 @@
 import React,{Fragment} from 'react';
+
 import {  
+
     View,
+
     TouchableOpacity,
+
     Linking,
+
     Platform,
+
     Image,
-    ImageBackground
+
+    ImageBackground,
+
     Text} from 'react-native';
 
 
+
 export default class AppTeamNumbers extends React.Component {
+
  
+
     dialCallP = () => {
+
    
-      let phoneNumberP = '';
+
+      let phoneNumber = '';
+
    
+
       if (Platform.OS === 'android') {
-        phoneNumberP = 'tel:${8105976325}';
+
+        phoneNumber = 'tel:${8105976325}';
+
       }
+
       else {
-        phoneNumberP = 'telprompt:${8105976325}';
+
+        phoneNumber = 'telprompt:${8105976325}';
+
       }
+
    
-      Linking.openURL(phoneNumberP);
+
+      Linking.openURL(phoneNumber);
+
     };
+
     dialCallN = () => {
+
    
-      let phoneNumberN = '';
+
+      let phoneNumber = '';
+
    
+
       if (Platform.OS === 'android') {
-        phoneNumberN = 'tel:${7411830877}';
+
+        phoneNumber = 'tel:${7411830877}';
+
       }
+
       else {
-        phoneNumberN = 'telprompt:${7411830877}';
+
+        phoneNumber = 'telprompt:${7411830877}';
+
       }
+
    
-      Linking.openURL(phoneNumberN);
+
+      Linking.openURL(phoneNumber);
+
     };
-   
-    render() {
-      return (
-       <Fragment>
-          <ImageBackground source={require('./src/images/BACKG5.png')} 
-            style={{
-              flex:1
-              }}>
-          <View style={{
-           backgroundColor:'#213368',
-           borderRadius: 10,
-           paddingTop:30,
-           paddingLeft:20
-           paddingRight:20          
-         }}>
-          <View>
-              <Image source={require('../assets/PSLOGOWHITE.png')} style={{alignItems: 'flex-start', height:23, width:23, borderRadius:6}} />
-              <Text style={{color:'white', fontSize: 14, padding: 5}}> Prajwal</Text>
-              <TouchableOpacity onPress={this.dialCallP} activeOpacity={0.7} style={{alignItems: 'flex-end'}} >
-              <Image source={require('../assets/dialer-app.png')}  style={{ height:22, width:22, borderRadius:6}}/>
-              </TouchableOpacity>
-        </View>
-        <View>
-              <Image source={require('../assets/PSLOGOWHITE.png')} style={{alignItems: 'flex-start', height:23, width:23, borderRadius:6}} />
-              <Text style={{color:'white', fontSize: 14, padding: 5}}> Guru Nanma </Text>
-              <TouchableOpacity onPress={this.dialCallN} activeOpacity={0.7} style={{alignItems: 'flex-end'}} >
-              <Image source={require('../assets/dialer-app.png')}  style={{ height:22, width:22, borderRadius:6}} />
-              </TouchableOpacity>
-        </View>
-        </View>
-        </ImageBackground>
-     </Fragment>
-      );
+
+    static navigationOptions={
+      tabBarLabel:'App team'
     }
+
+    
+
+   
+
+    render() {
+
+      return (
+
+       <Fragment>
+
+          <ImageBackground source={require('../assets/imageSolar.png')} 
+            style={{
+              flex:1,
+              paddingTop:20,
+              paddingLeft:20,
+              paddingRight:20,
+              paddingBottom:20
+
+           
+            }}
+
+            >
+
+         <View style={{
+
+           backgroundColor:'#213368',
+
+           flex:1,
+
+           borderRadius: 10,
+
+           paddingTop:20,
+
+           paddingLeft:20,
+
+           paddingRight:20
+
+         }}>
+
+          <View style={{ flex: 1,
+
+                              justifyContent:'space-between', 
+
+                              flexDirection:'row'}}>
+
+              <Image source={require('../assets/PSLOGOWHITE.png')} style={{alignItems: 'flex-start', height:28, width:28, borderRadius:6}} />
+
+              <Text style={{color:'white',alignItems:'center', fontSize: 18}}> Prajwal Kulkarni</Text>
+
+              <TouchableOpacity onPress={this.dialCallP} activeOpacity={0.7} style={{alignItems: 'flex-end'}} >
+
+              <Image source={require('../assets/dialer-app.png')} style={{ height:25, width:25, borderRadius:6}}/>
+
+              </TouchableOpacity>
+
+          </View>
+
+        <View style={{ flex: 1,
+
+                              
+                              justifyContent:'space-between', 
+
+                              flexDirection:'row'}}>
+
+              <Image source={require('../assets/PSLOGOWHITE.png')} style={{alignItems: 'flex-start', height:28, width:28, borderRadius:6}} />
+
+              <Text style={{color:'white',alignItems:'center', fontSize: 18}}>Guru Nanma</Text>
+
+              <TouchableOpacity onPress={this.dialCallN} activeOpacity={0.7} style={{alignItems: 'flex-end'}} >
+
+              <Image source={require('../assets/dialer-app.png')} style={{ height:25, width:25, borderRadius:6}} />
+
+              </TouchableOpacity>
+
+        </View>
+
+        
+        </View>
+
+       </ImageBackground>
+
+     </Fragment>
+
+      );
+
+    }
+
   }
