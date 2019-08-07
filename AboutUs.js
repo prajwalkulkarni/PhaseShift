@@ -40,7 +40,7 @@ export default class AboutUs extends React.Component {
               }}>
 
                 <View style={{flex:1,alignItems:'flex-start'}}>
-                <Icon name="menu"  onPress= {()=>this.props.navigation.openDrawer()}/>  
+                <Icon name="menu" style={{color:'#fff'}} onPress= {()=>this.props.navigation.openDrawer()}/>  
 
                 </View>
 
