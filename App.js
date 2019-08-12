@@ -9,7 +9,9 @@ import Map from './screens/Map';
 import AboutUs from './screens/AboutUs';
 import AboutBMSCE from './screens/AboutBMSCE';
 import AboutTheme from './screens/AboutTheme';
-import TeamPage from './screens/TeamPage';
+import PowerUp from './screens/PowerUp';
+import LandingPage from './screens/LandingPage'
+
 import CoreNumbers from './screens/CoreNumbers';
 import AppTeamNumbers from './screens/AppTeamNumbers';
 
@@ -32,23 +34,24 @@ const CustomDrawerComponent = (props) => (
 const AppTabNavigator = createMaterialTopTabNavigator({
   Events: {
     screen:Events,
-    navigationOption:{
+    navigationOptions:{
       tabBarLabel: 'Events',
       tabBarIcon:({tintColor})=>(
-        <Icon name='event' color={tintColor} size={25} />
-      )
+        <Icon name='event' color='#fff' size={25} />
+      ),
+     
     }
   },
   Workshop: {
     screen: Workshop,
-    navigationOption:{
+    navigationOptions:{
       tabBarLabel: 'Workshop',
       tabBarIcon:({tintColor})=>(
         <Icon name='store' color={tintColor} size={25} />
        ) }},
   Map: {
     screen: Map,
-    navigationOption:{
+    navigationOptions:{
       tabBarLabel: 'Map',
       tabBarIcon:({tintColor})=>(
         <Icon name='explore' color={tintColor} size={25} />
@@ -56,7 +59,7 @@ const AppTabNavigator = createMaterialTopTabNavigator({
        }},
   Schedule: {
     screen : Schedule,
-    navigationOption:{
+    navigationOptions:{
       tabBarLabel: 'Schedule',
       tabBarIcon:({tintColor})=>(
         <Icon name='schedule' color={tintColor} size={25} />
@@ -86,14 +89,13 @@ const AppTabNavigator = createMaterialTopTabNavigator({
 const TabNavigator = createMaterialTopTabNavigator({
   CoreNumbers: {
     screen:CoreNumbers,
-    navigationOption:{
-      tabBarLabel: 'Core Team'
-      
+    navigationOptions:{
+      tabBarLabel: 'Core Team',
     }
   },
   AppTeamNumbers: {
     screen: AppTeamNumbers,
-    navigationOption:{
+    navigationOptions:{
       tabBarLabel: 'App Team'
      
       }}
@@ -118,25 +120,66 @@ const TabNavigator = createMaterialTopTabNavigator({
 
 const AppDrawerNavigation = createDrawerNavigator({
   AboutUs:AboutUs,
-  Events:AppTabNavigator,
-  Workshop:AppTabNavigator,
-  Schedule:AppTabNavigator,
-  Map:AppTabNavigator,
-  CoreNumbers:TabNavigator,
-  AboutTheme:AboutTheme,
-  AboutBMSCE:AboutBMSCE
+  Events:{
+    screen:AppTabNavigator,
+    navigationOptions:{
+       drawerIcon : (
+        <Image source={require('./assets/events_1.png')} style={{height:24,width:24}}/>
+      )
+    }},
+  Workshop:{
+    screen:AppTabNavigator,
+    navigationOptions:{
+      drawerIcon : (
+        <Image source={require('./assets/workshop.png')} style={{height:24,width:24}}/>
+
+      )
+    }},
+  Schedule:{
+    screen:AppTabNavigator,
+    navigationOptions:{
+      drawerIcon : (
+        <Image source={require('./assets/schedule_i.png')} style={{height:24,width:24}}/>
+      )
+    }},
+  Map:{
+    screen:AppTabNavigator,
+    navigationOptions:{
+      drawerIcon : (
+        <Image source={require('./assets/map_white.png')} style={{height:24,width:24}}/>
+      )
+    }},
+  CoreNumbers:{
+    screen:TabNavigator,
+    navigationOptions:{
+      drawerLabel:'Team',
+      drawerIcon:(
+        <Image source={require('./assets/team-icon-white.png')} style={{height:24,width:24}}/>
+      )
+    }},
+  AboutTheme:{
+    screen:AboutTheme,
+    drawerLabel:'Theme'},
+  AboutBMSCE:{
+    screen:AboutBMSCE,
+    drawerLabel:'About BMSCE'},
   
 },{
   contentComponent:CustomDrawerComponent,
   drawerWidth:width,
   contentOptions:{
     activeTintColor:'white',
-    inactiveTintColor:'white'
+    inactiveTintColor:'white',
+    labelStyle:{
+      fontSize:20,
+      fontStyle:'Poppins-ExtraLight'
+    }
     
   }
 })
 
 const stackNavigator = createStackNavigator({
+  PowerUp:PowerUp,
   AboutTheme:AboutTheme,
   AboutBMSCE:AboutBMSCE
 })
@@ -146,7 +189,7 @@ const stackNavigator = createStackNavigator({
 
 
 const AppSwitchNavigator = createSwitchNavigator({
-
+  PowerUp:stackNavigator,
   AboutUs:AppDrawerNavigation,
   Events:AppDrawerNavigation,
   Workshop:AppDrawerNavigation,
