@@ -119,7 +119,12 @@ const TabNavigator = createMaterialTopTabNavigator({
 
 
 const AppDrawerNavigation = createDrawerNavigator({
-  AboutUs:AboutUs,
+  AboutUs:{
+    screen:AboutUs,
+    navigationOptions:{
+      drawerLabel:'About Us'
+    }
+  },
   Events:{
     screen:AppTabNavigator,
     navigationOptions:{
